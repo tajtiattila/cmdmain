@@ -1,3 +1,4 @@
+// Package cmdmain provides simple subcommand support.
 package cmdmain
 
 import (
@@ -8,12 +9,14 @@ import (
 )
 
 // Globals represent global flags that may be specified
-// before subcommands.
+// before subcommands on the command line.
 var Globals *flag.FlagSet
 
 func init() {
 	Globals = flag.NewFlagSet("globals", flag.ContinueOnError)
 	Globals.Usage = func() {}
+
+	flag.CommandLine = Globals
 }
 
 type cmd struct {
