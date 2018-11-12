@@ -66,6 +66,13 @@ func Main() {
 		Usage()
 	}
 
+	for _, ff := range funcFlags {
+		if ff.v {
+			ff.f()
+			os.Exit(0)
+		}
+	}
+
 	args := Globals.Args()
 	if len(args) == 0 {
 		fmt.Fprintln(os.Stderr, "No command specified.\n")
